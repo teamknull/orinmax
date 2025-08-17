@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "sonx",
+      "name": "sunx",
       "dependencies": {
         "@prisma/client": "^6.14.0",
         "@radix-ui/react-checkbox": "^1.3.3",

@@ -15,14 +15,18 @@ export function validatedAction<S extends z.ZodType<any, any>, T>(
   schema: S,
   action: ValidatedActionFunction<S, T>
 ) {
-  return async (prevState: ActionState, formData: FormData): Promise<T> => {
+  return async (prevState: ActionState, formData: FormData): Promise<ActionState> => {
     const result = schema.safeParse(Object.fromEntries(formData));
-    console.log(result);
+    
     if (!result.success) {
-      console.log(result.error.errors);
-      return { error: result.error.errors[0].message } as T;
+      return { error: result.error.issues[0].message };
     }
 
-    return action(result.data, formData);
+    try {
+      await action(result.data, formData);
+      return { success: "Success" };
+    } catch (error) {
+      return { error: error instanceof Error ? error.message : "An error occurred" };
+    }
   };
 }

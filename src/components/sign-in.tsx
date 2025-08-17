@@ -3,64 +3,42 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useState } from "react";
+import { useTransition } from "react";
 import { Loader2 } from "lucide-react";
-import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
 import { toast } from "sonner";
+import { loginEmail } from "@/app/auth/action";
 import { useRouter } from "next/navigation";
-import Form from "next/form";
 
 export default function SignIn() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [loading, setLoading] = useState(false);
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    
-    if (!email || !password) {
-      toast.error("Please fill in all fields");
-      return;
-    }
-
-    await signIn.email(
-      {
-        email,
-        password,
-      },
-      {
-        onRequest: () => {
-          setLoading(true);
-        },
-        onResponse: () => {
-          setLoading(false);
-        },
-        onError: (ctx) => {
-          toast.error(ctx.error.message);
-        },
-        onSuccess: () => {
-          toast.success("Successfully signed in!");
-          router.push("/dashboard");
-        },
+  const handleSubmit = async (formData: FormData) => {
+    startTransition(async () => {
+      const result = await loginEmail({}, formData);
+      
+      if (result?.error) {
+        toast.error(result.error);
+      } else if (result?.success) {
+        toast.success("Successfully signed in!");
+        router.push("/dashboard");
       }
-    );
+    });
   };
 
   return (
-    <Form onSubmit={handleSubmit} className="space-y-4">
+    <form action={handleSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="email" className="text-foreground">
           Email
         </Label>
         <Input
           id="email"
+          name="email"
           type="email"
           placeholder="m@example.com"
           required
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
           className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
         />
       </div>
@@ -80,11 +58,11 @@ export default function SignIn() {
 
         <Input
           id="password"
+          name="password"
           type="password"
           placeholder="Enter your password"
           autoComplete="current-password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
+          required
           className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
         />
       </div>
@@ -92,13 +70,13 @@ export default function SignIn() {
       <Button
         type="submit"
         className="w-full"
-        disabled={loading}
+        disabled={isPending}
       >
-        {loading ? (
+        {isPending ? (
           <Loader2 size={16} className="animate-spin mr-2" />
         ) : null}
         Sign In
       </Button>
-    </Form>
+    </form>
   );
 }

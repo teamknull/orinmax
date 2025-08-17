@@ -1,115 +1,107 @@
-# Sunx - Secure Authentication System
+# Sunx - Next.js Authentication Template
 
-A modern, secure authentication system built with Next.js, Better Auth, and Prisma.
+A modern, production-ready authentication template built with Next.js 15, Better Auth, Prisma ORM, and shadcn/ui components.
 
-## Features
+## ✨ Features
 
-- 🔐 **Email & Password Authentication** - Secure sign up and sign in
-- 🎨 **Modern UI** - Beautiful, responsive design with dark theme
-- 🔒 **Password Reset** - Complete forgot password flow
-- 📱 **Responsive Design** - Works on all devices
-- ⚡ **Fast & Secure** - Built with Next.js 15 and Better Auth
-- 🗄️ **Database Ready** - SQLite with Prisma ORM
+- 🔐 **Complete Authentication Flow** - Sign up, sign in, password reset
+- 🎨 **Modern UI** - Beautiful dark theme with glassmorphism effects
+- ⚡ **Next.js 15** - Latest App Router with server actions
+- 🗄️ **Database Ready** - SQLite with Prisma (easy to swap to PostgreSQL)
+- 🔒 **Better Auth** - Secure authentication with session management
+- 📱 **Responsive Design** - Works perfectly on all devices
+- 🎯 **TypeScript** - Full type safety throughout
+- 🎨 **shadcn/ui** - Professional UI components
+- 🔄 **Server Actions** - Form handling with Zod validation
 
-## Tech Stack
-
-- **Framework**: Next.js 15 with App Router
-- **Authentication**: Better Auth
-- **Database**: SQLite with Prisma
-- **UI**: Tailwind CSS + Radix UI
-- **Styling**: Custom components with glassmorphism effects
-- **Validation**: Zod schemas
-- **Notifications**: Sonner toast notifications
-
-## Getting Started
+## 🚀 Quick Start
 
 ### Prerequisites
 
 - Node.js 18+ 
-- npm or yarn
+- bun, yarn, or pnpm
 
-### Installation
+### 1. Clone and Install
 
-1. Clone the repository:
 ```bash
-git clone <repository-url>
+git clone https://github.com/rajofearth/sunx.git
 cd sunx
+bun install
 ```
 
-2. Install dependencies:
-```bash
-npm install
-```
+### 2. Environment Setup
 
-3. Set up environment variables:
 ```bash
 cp .env.example .env
 ```
 
-4. Generate Prisma client and push database schema:
-```bash
-npx prisma generate
-npx prisma db push
+Update `.env` with your configuration:
+```env
+# Database (SQLite by default)
+DATABASE_URL="file:./local.db"
+
+# App URL (no trailing slash)
+NEXT_PUBLIC_APP_URL="http://localhost:3000"
 ```
 
-5. Start the development server:
+### 3. Database Setup
+
 ```bash
-npm run dev
+# Generate Prisma client
+bun run prisma:generate
+
+# Push schema to database
+bun run db:push
 ```
 
-6. Open [http://localhost:3000](http://localhost:3000) in your browser.
+### 4. Start Development
 
-## Authentication Flow
+```bash
+bun dev
+```
 
-### Sign Up
-1. Navigate to `/auth`
-2. Click "Sign Up" tab
-3. Fill in your information (name, email, password)
-4. Optionally upload a profile image
-5. Click "Create an account"
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-### Sign In
-1. Navigate to `/auth`
-2. Enter your email and password
-3. Click "Sign In"
-
-### Password Reset
-1. On the sign-in page, click "Forgot your password?"
-2. Enter your email address
-3. Check your email for the reset link
-4. Click the link and set a new password
-
-## Project Structure
+## 🏗️ Project Structure
 
 ```
 src/
 ├── app/
 │   ├── auth/
-│   │   └── login.tsx          # Main login/signup page
+│   │   ├── page.tsx              # Auth page (protected from logged-in users)
+│   │   └── action.ts             # Server actions for auth
 │   ├── dashboard/
-│   │   └── page.tsx           # Protected dashboard
+│   │   └── page.tsx              # Protected dashboard
 │   ├── forgot-password/
-│   │   └── page.tsx           # Password reset request
+│   │   └── page.tsx              # Password reset request
 │   ├── reset-password/
-│   │   └── page.tsx           # Password reset form
-│   └── api/auth/[...all]/
-│       └── route.ts           # Better Auth API routes
+│   │   └── page.tsx              # Password reset form
+│   ├── api/auth/[...all]/
+│   │   └── route.ts              # Better Auth API routes
+│   ├── globals.css               # Global styles & Tailwind
+│   ├── layout.tsx                # Root layout
+│   └── page.tsx                  # Home page (redirects to auth/dashboard)
 ├── components/
-│   ├── sign-in.tsx            # Sign in form component
-│   ├── sign-up.tsx            # Sign up form component
-│   └── ui/                    # Reusable UI components
+│   ├── auth-client.tsx           # Auth UI with tabs
+│   ├── sign-in.tsx               # Sign in form
+│   ├── sign-up.tsx               # Sign up form
+│   ├── forgot-password-client.tsx # Forgot password UI
+│   ├── reset-password-client.tsx # Reset password UI
+│   └── ui/                       # shadcn/ui components
 ├── lib/
-│   ├── auth.ts                # Better Auth configuration
-│   ├── auth-client.ts         # Client-side auth utilities
-│   ├── prisma.ts              # Prisma client
-│   └── types.ts               # Zod schemas
+│   ├── auth.ts                   # Better Auth configuration
+│   ├── auth-client.ts            # Client-side auth utilities
+│   ├── action-helpers.ts         # Server action utilities
+│   ├── types.ts                  # Zod schemas
+│   ├── prisma.ts                 # Prisma client
+│   └── utils.ts                  # Utility functions
 └── generated/
-    └── prisma/                # Generated Prisma client
+    └── prisma/                   # Generated Prisma client
 ```
 
-## Configuration
+## 🔧 Configuration
 
-### Better Auth Configuration
+### Better Auth Setup
 
 The authentication is configured in `src/lib/auth.ts`:
 
@@ -119,9 +111,9 @@ export const auth = betterAuth({
     enabled: true,
     minPasswordLength: 8,
     maxPasswordLength: 128,
-    // Password reset configuration
     async sendResetPassword({ user, url, token }, request) {
-      // Implement your email sending logic here
+      // TODO: Implement your email sending logic here
+      console.log(`Password reset email for ${user.email}: ${url}`);
     },
   },
   database: prismaAdapter(prisma, {
@@ -130,63 +122,72 @@ export const auth = betterAuth({
   session: {
     expiresIn: 60 * 60 * 24 * 7, // 7 days
   },
+  plugins: [nextCookies()],
 });
 ```
 
 ### Database Schema
 
-The database schema is defined in `prisma/schema.prisma` and includes:
+The Prisma schema includes all necessary tables for Better Auth:
 
-- **User**: User information and authentication data
-- **Session**: User sessions for authentication
-- **Account**: OAuth and credential accounts
-- **Verification**: Email verification tokens
+- **User** - User information and authentication data
+- **Session** - User sessions for authentication
+- **Account** - OAuth and credential accounts
+- **Verification** - Email verification tokens
 
-## Security Features
-
-- **Password Hashing**: Uses scrypt for secure password hashing
-- **Session Management**: Secure session handling with expiration
-- **Input Validation**: Zod schemas for all form inputs
-- **CSRF Protection**: Built-in CSRF protection with Better Auth
-- **Rate Limiting**: Configurable rate limiting for auth endpoints
-
-## Customization
+## 🎨 Customization
 
 ### Styling
-The UI uses a custom dark theme with glassmorphism effects. You can customize the styling by modifying:
 
-- `src/app/globals.css` - Global styles
-- Component-specific CSS classes in the components
-- Tailwind configuration in `tailwind.config.js`
+The template uses Tailwind CSS v4 with a custom dark theme. Customize by modifying:
 
-### Email Configuration
+- `src/app/globals.css` - Global styles and CSS variables
+- Component-specific classes in the components
+- The theme uses CSS variables for easy customization
+
+### Email Provider
+
 To enable email functionality (password reset, verification), implement the email sending functions in `src/lib/auth.ts`:
 
 ```typescript
 async sendResetPassword({ user, url, token }, request) {
-  // Send email using your preferred email service
-  await sendEmail({
-    to: user.email,
-    subject: "Reset your password",
-    html: `<a href="${url}">Reset Password</a>`,
+  // Example with Resend
+  await fetch('https://api.resend.com/emails', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: 'noreply@yourdomain.com',
+      to: user.email,
+      subject: 'Reset your password',
+      html: `<a href="${url}">Reset Password</a>`,
+    }),
   });
 }
 ```
 
-## Deployment
+Popular email providers:
+- [Resend](https://resend.com) - Developer-friendly email API
+- [SendGrid](https://sendgrid.com) - Enterprise email service
+- [Postmark](https://postmarkapp.com) - Transactional email
+- [AWS SES](https://aws.amazon.com/ses/) - Amazon's email service
+
+## 🚀 Deployment
 
 ### Environment Variables
 
-Make sure to set these environment variables in production:
+Set these in your production environment:
 
 ```env
-DATABASE_URL="file:./local.db"
+DATABASE_URL="your-production-database-url"
 NEXT_PUBLIC_APP_URL="https://your-domain.com"
 ```
 
-### Database
+### Database Migration
 
-For production, consider using a more robust database like PostgreSQL:
+For production, consider using PostgreSQL:
 
 1. Update `prisma/schema.prisma`:
 ```prisma
@@ -203,14 +204,72 @@ database: prismaAdapter(prisma, {
 }),
 ```
 
-## Contributing
+3. Deploy your database and run migrations:
+```bash
+npx prisma migrate deploy
+```
+
+### Deployment Platforms
+
+This template works with all major deployment platforms:
+
+- **Vercel** - Recommended for Next.js apps
+- **Netlify** - Great for static sites
+- **Railway** - Easy database + app deployment
+- **Render** - Simple deployment with PostgreSQL
+- **AWS/GCP/Azure** - Enterprise deployments
+
+## 🛠️ Development
+
+### Available Scripts
+
+```bash
+bun dev          # Start development server
+bun run build        # Build for production
+bun run start        # Start production server
+bun run typecheck    # TypeScript type checking
+bun run prisma:generate  # Generate Prisma client
+bun run db:push      # Push schema to database
+```
+
+### Adding New Features
+
+1. **New Pages**: Add to `src/app/` following the existing pattern
+2. **Components**: Create in `src/components/` with proper TypeScript
+3. **Server Actions**: Use the `validatedAction` helper in `src/lib/action-helpers.ts`
+4. **Database**: Add models to `prisma/schema.prisma`
+
+## 🔒 Security Features
+
+- **Password Hashing** - Uses scrypt for secure password hashing
+- **Session Management** - Secure session handling with expiration
+- **Input Validation** - Zod schemas for all form inputs
+- **CSRF Protection** - Built-in CSRF protection with Better Auth
+- **Rate Limiting** - Configurable rate limiting for auth endpoints
+- **Type Safety** - Full TypeScript coverage
+
+## 🤝 Contributing
 
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
 
-## License
+## 📄 License
 
-This project is licensed under the MIT License.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Next.js](https://nextjs.org) - The React framework
+- [Better Auth](https://better-auth.com) - Authentication library
+- [Prisma](https://prisma.io) - Database toolkit
+- [shadcn/ui](https://ui.shadcn.com) - UI components
+- [Tailwind CSS](https://tailwindcss.com) - CSS framework
+
+---
+
+**Ready to build something amazing?** 🚀
+
+This template provides a solid foundation for any Next.js application requiring authentication. Just add your business logic and deploy!

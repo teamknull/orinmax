@@ -3,20 +3,19 @@
 import { validatedAction } from "@/lib/action-helpers";
 import { auth } from "@/lib/auth";
 import { LoginSchema, SignUpSchema } from "@/lib/types";
-import { redirect } from "next/navigation";
 
 export const signUpEmail = validatedAction(SignUpSchema, async (data) => {
-  const { email, password, name } = data;
+  const { email, password, firstName, lastName } = data;
 
   await auth.api.signUpEmail({
     body: {
       email,
       password,
-      name,
+      name: `${firstName} ${lastName}`,
     },
   });
 
-  redirect("/dashboard");
+  return { success: true };
 });
 
 export const loginEmail = validatedAction(LoginSchema, async (data) => {
@@ -26,5 +25,5 @@ export const loginEmail = validatedAction(LoginSchema, async (data) => {
     body: { email, password },
   });
 
-  redirect("/dashboard");
+  return { success: true };
 });
