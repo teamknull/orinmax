@@ -10,6 +10,7 @@ import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
 import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
+import Form from "next/form";
 
 export default function ResetPasswordPage() {
   const [password, setPassword] = useState("");
@@ -150,7 +151,7 @@ export default function ResetPasswordPage() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <Form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="password" className="text-foreground">
                 New Password
@@ -204,7 +205,7 @@ export default function ResetPasswordPage() {
                 Back to Sign In
               </Link>
             </div>
-          </form>
+          </Form>
         </CardContent>
       </Card>
     </div>

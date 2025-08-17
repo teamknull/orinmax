@@ -9,6 +9,7 @@ import { Loader2, ArrowLeft } from "lucide-react";
 import { authClient } from "@/lib/auth-client";
 import { toast } from "sonner";
 import Link from "next/link";
+import Form from "next/form";
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState("");
@@ -82,7 +83,7 @@ export default function ForgotPasswordPage() {
           </CardTitle>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <Form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
               <Label htmlFor="email" className="text-foreground">
                 Email Address
@@ -121,7 +122,7 @@ export default function ForgotPasswordPage() {
                 Back to Sign In
               </Link>
             </div>
-          </form>
+          </Form>
         </CardContent>
       </Card>
     </div>

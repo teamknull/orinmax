@@ -9,6 +9,7 @@ import { signIn } from "@/lib/auth-client";
 import Link from "next/link";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Form from "next/form";
 
 export default function SignIn() {
   const [email, setEmail] = useState("");
@@ -48,7 +49,7 @@ export default function SignIn() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <Form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
         <Label htmlFor="email" className="text-foreground">
           Email
@@ -98,6 +99,6 @@ export default function SignIn() {
         ) : null}
         Sign In
       </Button>
-    </form>
+    </Form>
   );
 }

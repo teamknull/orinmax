@@ -9,6 +9,7 @@ import { Loader2, X } from "lucide-react";
 import { signUp } from "@/lib/auth-client";
 import { toast } from "sonner";
 import { useRouter } from "next/navigation";
+import Form from "next/form";
 
 export default function SignUp() {
 	const [firstName, setFirstName] = useState("");
@@ -76,7 +77,7 @@ export default function SignUp() {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} className="space-y-4">
+		<Form onSubmit={handleSubmit} className="space-y-4">
 			<div className="grid grid-cols-2 gap-4">
 				<div className="space-y-2">
 					<Label htmlFor="first-name" className="text-foreground">
@@ -163,6 +164,7 @@ export default function SignUp() {
 								alt="Profile preview"
 								fill
 								className="object-cover"
+								priority
 							/>
 						</div>
 					)}
@@ -197,7 +199,7 @@ export default function SignUp() {
 				) : null}
 				Create an account
 			</Button>
-		</form>
+		</Form>
 	);
 }
 
