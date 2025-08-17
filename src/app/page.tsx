@@ -1,12 +1,15 @@
-import { prisma } from "@/lib/prisma";
+import { auth } from "@/lib/auth";
+import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 
 export default async function Home() {
-  const user = await prisma.user.findFirst();
+  const session = await auth.api.getSession({
+    headers: await headers()
+  });
   
-  return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-4xl font-bold">Sonx</h1>
-      <p className="text-lg">TUr Name here: {user?.name}</p>
-    </div>
-  );
+  if (!session) {
+    redirect("/auth");
+  } else {
+    redirect("/dashboard");
+  }
 }
