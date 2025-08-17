@@ -1,7 +1,11 @@
 # Sunx - Next.js Authentication Template
 
 A modern, production-ready authentication template built with Next.js 15, Better Auth, Prisma ORM, and shadcn/ui components.
-
+<div align="center">
+  <img src="https://github.com/user-attachments/assets/1cde1a61-5b6d-4ef7-a912-a90f81b9dda2" alt="Sign In Page" width="300" height="200" style="border-radius: 8px; margin: 8px;" />
+  <img src="https://github.com/user-attachments/assets/a5d9f67a-da94-483d-bae0-a585c67c9feb" alt="Sign Up Page" width="300" height="200" style="border-radius: 8px; margin: 8px;" />
+  <img src="https://github.com/user-attachments/assets/731c5049-93e8-45ea-b256-bbd57319d41c" alt="Dashboard" width="300" height="200" style="border-radius: 8px; margin: 8px;" />
+</div>
 ## ✨ Features
 
 - 🔐 **Complete Authentication Flow** - Sign up, sign in, password reset
