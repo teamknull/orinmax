@@ -13,23 +13,23 @@ export default function LoginPage() {
   const [mode, setMode] = useState<AuthMode>("signin");
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary to-background p-4">
       <div className="w-full max-w-md">
-        <Card className="bg-white/10 backdrop-blur-sm border-white/20 shadow-2xl">
+        <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-2xl">
           <CardHeader className="pb-4">
-            <CardTitle className="text-center text-2xl font-bold text-white mb-2">
+            <CardTitle className="text-center text-2xl font-bold text-foreground mb-2">
               Welcome to Sunx
             </CardTitle>
             
             {/* Tab Navigation */}
-            <div className="flex bg-white/10 rounded-lg p-1">
+            <div className="flex bg-muted/50 rounded-lg p-1">
               <Button
                 variant="ghost"
                 className={cn(
                   "flex-1 text-sm font-medium transition-all duration-200",
                   mode === "signin"
-                    ? "bg-white text-slate-900 shadow-sm"
-                    : "text-white/70 hover:text-white hover:bg-white/10"
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 )}
                 onClick={() => setMode("signin")}
               >
@@ -40,8 +40,8 @@ export default function LoginPage() {
                 className={cn(
                   "flex-1 text-sm font-medium transition-all duration-200",
                   mode === "signup"
-                    ? "bg-white text-slate-900 shadow-sm"
-                    : "text-white/70 hover:text-white hover:bg-white/10"
+                    ? "bg-background text-foreground shadow-sm"
+                    : "text-muted-foreground hover:text-foreground hover:bg-muted"
                 )}
                 onClick={() => setMode("signup")}
               >

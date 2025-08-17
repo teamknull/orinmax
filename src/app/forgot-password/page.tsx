@@ -42,25 +42,25 @@ export default function ForgotPasswordPage() {
 
   if (sent) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
-        <Card className="bg-white/10 backdrop-blur-sm border-white/20 shadow-2xl max-w-md w-full">
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary to-background p-4">
+        <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-2xl max-w-md w-full">
           <CardHeader>
-            <CardTitle className="text-center text-2xl font-bold text-white">
+            <CardTitle className="text-center text-2xl font-bold text-foreground">
               Check Your Email
             </CardTitle>
           </CardHeader>
           <CardContent className="space-y-4">
-            <p className="text-white/80 text-center">
+            <p className="text-foreground/80 text-center">
               We've sent a password reset link to <strong>{email}</strong>
             </p>
-            <p className="text-white/60 text-sm text-center">
+            <p className="text-muted-foreground text-sm text-center">
               Click the link in the email to reset your password. The link will expire in 1 hour.
             </p>
             <div className="flex flex-col gap-2">
               <Link href="/auth">
                 <Button 
                   variant="outline" 
-                  className="w-full border-white/20 text-white hover:bg-white/10"
+                  className="w-full border-border/50 text-foreground hover:bg-muted"
                 >
                   <ArrowLeft size={16} className="mr-2" />
                   Back to Sign In
@@ -74,17 +74,17 @@ export default function ForgotPasswordPage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 p-4">
-      <Card className="bg-white/10 backdrop-blur-sm border-white/20 shadow-2xl max-w-md w-full">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-secondary to-background p-4">
+      <Card className="bg-card/50 backdrop-blur-sm border-border/50 shadow-2xl max-w-md w-full">
         <CardHeader>
-          <CardTitle className="text-center text-2xl font-bold text-white">
+          <CardTitle className="text-center text-2xl font-bold text-foreground">
             Forgot Password
           </CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="space-y-2">
-              <Label htmlFor="email" className="text-white">
+              <Label htmlFor="email" className="text-foreground">
                 Email Address
               </Label>
               <Input
@@ -94,17 +94,17 @@ export default function ForgotPasswordPage() {
                 required
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
+                className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
               />
             </div>
             
-            <p className="text-white/60 text-sm">
+            <p className="text-muted-foreground text-sm">
               Enter your email address and we'll send you a link to reset your password.
             </p>
 
             <Button
               type="submit"
-              className="w-full bg-white text-slate-900 hover:bg-white/90 transition-colors"
+              className="w-full"
               disabled={loading}
             >
               {loading ? (
@@ -116,7 +116,7 @@ export default function ForgotPasswordPage() {
             <div className="text-center">
               <Link 
                 href="/auth"
-                className="text-white/70 hover:text-white text-sm underline"
+                className="text-muted-foreground hover:text-foreground text-sm underline"
               >
                 Back to Sign In
               </Link>

@@ -50,7 +50,7 @@ export default function SignIn() {
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
       <div className="space-y-2">
-        <Label htmlFor="email" className="text-white">
+        <Label htmlFor="email" className="text-foreground">
           Email
         </Label>
         <Input
@@ -60,18 +60,18 @@ export default function SignIn() {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
+          className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
         />
       </div>
 
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <Label htmlFor="password" className="text-white">
+          <Label htmlFor="password" className="text-foreground">
             Password
           </Label>
           <Link
             href="/forgot-password"
-            className="text-sm text-white/70 hover:text-white underline"
+            className="text-sm text-muted-foreground hover:text-foreground underline"
           >
             Forgot your password?
           </Link>
@@ -84,13 +84,13 @@ export default function SignIn() {
           autoComplete="current-password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
+          className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
         />
       </div>
 
       <Button
         type="submit"
-        className="w-full bg-white text-slate-900 hover:bg-white/90 transition-colors"
+        className="w-full"
         disabled={loading}
       >
         {loading ? (

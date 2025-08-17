@@ -79,7 +79,7 @@ export default function SignUp() {
 		<form onSubmit={handleSubmit} className="space-y-4">
 			<div className="grid grid-cols-2 gap-4">
 				<div className="space-y-2">
-					<Label htmlFor="first-name" className="text-white">
+					<Label htmlFor="first-name" className="text-foreground">
 						First name
 					</Label>
 					<Input
@@ -88,11 +88,11 @@ export default function SignUp() {
 						required
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
-						className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
+						className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
 					/>
 				</div>
 				<div className="space-y-2">
-					<Label htmlFor="last-name" className="text-white">
+					<Label htmlFor="last-name" className="text-foreground">
 						Last name
 					</Label>
 					<Input
@@ -101,13 +101,13 @@ export default function SignUp() {
 						required
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
-						className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
+						className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
 					/>
 				</div>
 			</div>
 			
 			<div className="space-y-2">
-				<Label htmlFor="email" className="text-white">
+				<Label htmlFor="email" className="text-foreground">
 					Email
 				</Label>
 				<Input
@@ -117,12 +117,12 @@ export default function SignUp() {
 					required
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
-					className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
+					className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
 				/>
 			</div>
 			
 			<div className="space-y-2">
-				<Label htmlFor="password" className="text-white">
+				<Label htmlFor="password" className="text-foreground">
 					Password
 				</Label>
 				<Input
@@ -132,12 +132,12 @@ export default function SignUp() {
 					onChange={(e) => setPassword(e.target.value)}
 					autoComplete="new-password"
 					placeholder="Password"
-					className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
+					className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
 				/>
 			</div>
 			
 			<div className="space-y-2">
-				<Label htmlFor="password_confirmation" className="text-white">
+				<Label htmlFor="password_confirmation" className="text-foreground">
 					Confirm Password
 				</Label>
 				<Input
@@ -147,12 +147,12 @@ export default function SignUp() {
 					onChange={(e) => setPasswordConfirmation(e.target.value)}
 					autoComplete="new-password"
 					placeholder="Confirm Password"
-					className="bg-white/10 border-white/20 text-white placeholder:text-white/50 focus:border-white/40"
+					className="bg-background/50 border-border/50 text-foreground placeholder:text-muted-foreground focus:border-border"
 				/>
 			</div>
 			
 			<div className="space-y-2">
-				<Label htmlFor="image" className="text-white">
+				<Label htmlFor="image" className="text-foreground">
 					Profile Image (optional)
 				</Label>
 				<div className="flex items-end gap-4">
@@ -172,11 +172,11 @@ export default function SignUp() {
 							type="file"
 							accept="image/*"
 							onChange={handleImageChange}
-							className="w-full bg-white/10 border-white/20 text-white file:bg-white/10 file:border-white/20 file:text-white"
+							className="w-full bg-background/50 border-border/50 text-foreground file:bg-background/50 file:border-border/50 file:text-foreground"
 						/>
 						{imagePreview && (
 							<X
-								className="cursor-pointer text-white hover:text-white/70"
+								className="cursor-pointer text-foreground hover:text-muted-foreground"
 								onClick={() => {
 									setImage(null);
 									setImagePreview(null);
@@ -189,7 +189,7 @@ export default function SignUp() {
 			
 			<Button
 				type="submit"
-				className="w-full bg-white text-slate-900 hover:bg-white/90 transition-colors"
+				className="w-full"
 				disabled={loading}
 			>
 				{loading ? (
