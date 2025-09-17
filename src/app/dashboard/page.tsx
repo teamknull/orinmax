@@ -2,6 +2,7 @@ import { auth } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { Button } from "@/components/ui/button";
 import { headers } from "next/headers";
+import ClusterClient from "@/components/cluster-client";
 
 export default async function DashboardPage() {
   const session = await auth.api.getSession({
@@ -65,6 +66,11 @@ export default async function DashboardPage() {
             </div>
           </div>
           
+          <div className="mt-6 bg-muted/50 rounded-lg p-4 border border-border/50">
+            <h3 className="text-lg font-semibold text-foreground mb-2">Clustering</h3>
+            <ClusterClient />
+          </div>
+
           {session.user.image && (
             <div className="mt-6 bg-muted/50 rounded-lg p-4 border border-border/50">
               <h3 className="text-lg font-semibold text-foreground mb-2">Profile Image</h3>
