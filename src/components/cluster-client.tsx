@@ -61,10 +61,11 @@ export default function ClusterClient() {
     }
     setLoading(true);
     try {
+      const fastaPayload = fasta.replace(/\r\n/g, "\n");
       const res = await fetch("/api/clustering", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ fasta }),
+        body: JSON.stringify({ fasta: fastaPayload }),
       });
       const data = await res.json();
       if (!res.ok) {
