@@ -77,6 +77,11 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+  /* DNA palette */
+  --dna-a: #edd382; /* adenine */
+  --dna-t: #717ec3; /* thymine */
+  --dna-c: #ff6f59; /* cytosine */
+  --dna-g: #85ffc7; /* guanine */
 }
 
 .dark {
@@ -119,5 +124,212 @@
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+
+@keyframes spin-slow {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 10s linear infinite;
+}
+
+.bg-gradient-radial {
+  background: radial-gradient(circle, var(--tw-gradient-stops));
+}
+
+/* Adding 3D perspective and transform utilities for holographic DNA effect */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+/* Enhanced holographic glow effects */
+.holographic-glow {
+  filter: drop-shadow(0 0 10px currentColor) drop-shadow(0 0 20px currentColor);
+}
+
+/* 3D ribbon animation for DNA strands */
+@keyframes dna-rotate {
+  from {
+    transform: rotateY(0deg) rotateX(10deg);
+  }
+  to {
+    transform: rotateY(360deg) rotateX(10deg);
+  }
+}
+
+.animate-dna-rotate {
+  animation: dna-rotate 12s linear infinite;
+}
+
+/* DNA Helix Styles */
+.dna-container {
+  width: 150px;
+  height: 400px;
+  perspective: 2500px;
+}
+
+.bases {
+  width: 180px;
+  height: 15px;
+  transform-style: preserve-3d;
+  transform-origin: center center 0;
+  animation: dna-spin 4s reverse linear infinite;
+  background-size: 100% 3px;
+  background-position: 0 5px;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+.bases::before,
+.bases::after {
+  content: none; /* do not generate pseudo-elements */
+  display: none;
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-radius: 0;
+  animation: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+.bases::before {
+  transform: translate(-5px, -5px);
+  left: 0;
+}
+
+.bases::after {
+  transform: translate(5px, 3px);
+  right: 0;
+}
+
+/* Nucleotide base pair styles */
+.bases.at {
+  background-image: linear-gradient(
+    to right,
+    transparent 10%,
+    var(--dna-t) 10%,
+    var(--dna-t) 50%,
+    var(--dna-a) 50%,
+    var(--dna-a) 90%,
+    transparent 90%
+  );
+}
+
+.bases.at::before {
+  background: var(--dna-a);
+}
+
+.bases.at::after {
+  background: var(--dna-t);
+}
+
+.bases.ta {
+  background-image: linear-gradient(
+    to right,
+    transparent 10%,
+    var(--dna-a) 10%,
+    var(--dna-a) 50%,
+    var(--dna-t) 50%,
+    var(--dna-t) 90%,
+    transparent 90%
+  );
+}
+
+.bases.ta::before {
+  background: var(--dna-t);
+}
+
+.bases.ta::after {
+  background: var(--dna-a);
+}
+
+.bases.cg {
+  background-image: linear-gradient(
+    to right,
+    transparent 10%,
+    var(--dna-g) 10%,
+    var(--dna-g) 50%,
+    var(--dna-c) 50%,
+    var(--dna-c) 90%,
+    transparent 90%
+  );
+}
+
+.bases.cg::before {
+  background: var(--dna-c);
+}
+
+.bases.cg::after {
+  background: var(--dna-g);
+}
+
+.bases.gc {
+  background-image: linear-gradient(
+    to right,
+    transparent 10%,
+    var(--dna-c) 10%,
+    var(--dna-c) 50%,
+    var(--dna-g) 50%,
+    var(--dna-g) 90%,
+    transparent 90%
+  );
+}
+
+.bases.gc::before {
+  background: var(--dna-g);
+}
+
+.bases.gc::after {
+  background: var(--dna-c);
+}
+
+/* Inline base letters placed on the horizontal line */
+.base-label {
+  position: absolute;
+  top: 5px; /* centers vertically on the 3px stripe placed at y=5px */
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 1;
+  pointer-events: none;
+  color: currentColor;
+  text-shadow: none;
+  filter: none;
+  z-index: 2;
+}
+
+.base-label.left {
+  left: 0; /* at the start of the line */
+  transform: translate(-50%, -50%);
+}
+
+.base-label.right {
+  right: 0; /* at the end of the line */
+  transform: translate(50%, -50%);
+}
+
+.label-a { color: var(--dna-a); }
+.label-t { color: var(--dna-t); }
+.label-c { color: var(--dna-c); }
+.label-g { color: var(--dna-g); }
+
+@keyframes dna-spin {
+  0% {
+    transform: rotateY(360deg);
+  }
+  100% {
+    transform: rotateY(0deg);
   }
 }
