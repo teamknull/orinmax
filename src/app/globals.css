@@ -220,10 +220,10 @@
   background-image: linear-gradient(
     to right,
     transparent 10%,
-    var(--dna-t) 10%,
-    var(--dna-t) 50%,
+    var(--dna-a) 10%,
     var(--dna-a) 50%,
-    var(--dna-a) 90%,
+    var(--dna-t) 50%,
+    var(--dna-t) 90%,
     transparent 90%
   );
 }
@@ -240,10 +240,10 @@
   background-image: linear-gradient(
     to right,
     transparent 10%,
-    var(--dna-a) 10%,
-    var(--dna-a) 50%,
+    var(--dna-t) 10%,
     var(--dna-t) 50%,
-    var(--dna-t) 90%,
+    var(--dna-a) 50%,
+    var(--dna-a) 90%,
     transparent 90%
   );
 }
@@ -260,10 +260,10 @@
   background-image: linear-gradient(
     to right,
     transparent 10%,
-    var(--dna-g) 10%,
-    var(--dna-g) 50%,
+    var(--dna-c) 10%,
     var(--dna-c) 50%,
-    var(--dna-c) 90%,
+    var(--dna-g) 50%,
+    var(--dna-g) 90%,
     transparent 90%
   );
 }
@@ -280,10 +280,10 @@
   background-image: linear-gradient(
     to right,
     transparent 10%,
-    var(--dna-c) 10%,
-    var(--dna-c) 50%,
+    var(--dna-g) 10%,
     var(--dna-g) 50%,
-    var(--dna-g) 90%,
+    var(--dna-c) 50%,
+    var(--dna-c) 90%,
     transparent 90%
   );
 }
@@ -320,10 +320,11 @@
   transform: translate(50%, -50%);
 }
 
-.label-a { color: var(--dna-a); }
-.label-t { color: var(--dna-t); }
-.label-c { color: var(--dna-c); }
-.label-g { color: var(--dna-g); }
+/* Flip label colors (complementary to their base) */
+.label-a { color: var(--dna-t); }
+.label-t { color: var(--dna-a); }
+.label-c { color: var(--dna-g); }
+.label-g { color: var(--dna-c); }
 
 @keyframes dna-spin {
   0% {
