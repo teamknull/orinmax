@@ -82,6 +82,11 @@
   --dna-t: #717ec3; /* thymine */
   --dna-c: #ff6f59; /* cytosine */
   --dna-g: #85ffc7; /* guanine */
+  /* Government colors */
+  --gov-blue: oklch(0.4 0.15 240);
+  --gov-blue-light: oklch(0.6 0.15 240);
+  --gov-gray: oklch(0.8 0 0);
+  --gov-gray-dark: oklch(0.3 0 0);
 }
 
 .dark {
@@ -116,6 +121,11 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+  /* Government colors in dark mode */
+  --gov-blue: oklch(0.5 0.15 240);
+  --gov-blue-light: oklch(0.7 0.15 240);
+  --gov-gray: oklch(0.2 0 0);
+  --gov-gray-dark: oklch(0.1 0 0);
 }
 
 @layer base {
@@ -123,7 +133,58 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Government Research Software Enhancements */
+@layer utilities {
+  .gov-header {
+    background: linear-gradient(to bottom, #f8f9fa, #e9ecef);
+    border-bottom: 2px solid #dee2e6;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .gov-panel {
+    background: white;
+    border: 2px solid #dee2e6;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .gov-button {
+    background: #007bff;
+    border: 1px solid #007bff;
+    color: white;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.2s;
+  }
+
+  .gov-button:hover {
+    background: #0056b3;
+    border-color: #004085;
+  }
+
+  .gov-input {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    background: white;
+    color: #495057;
+    transition: border-color 0.15s;
+  }
+
+  .gov-input:focus {
+    border-color: #80bdff;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  }
+
+  .gov-status-bar {
+    background: #6c757d;
+    color: white;
+    border-top: 1px solid #495057;
   }
 }
 

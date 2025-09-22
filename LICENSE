@@ -1,21 +1,25 @@
-MIT License
+CLASSIFIED GOVERNMENT SOFTWARE LICENSE
 
-Copyright (c) 2025 orionmax Contributors
+Copyright (c) 2025 U.S. Department of Environmental Research - OrionPack Contributors
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+**SECURITY CLASSIFICATION: CONFIDENTIAL**
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+This software contains sensitive government research tools and algorithms for environmental DNA analysis. Unauthorized use, distribution, or modification is strictly prohibited and may result in severe civil and criminal penalties.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+**AUTHORIZED USE ONLY**
+
+This software is released under restricted access for authorized research personnel only. All users must maintain proper security clearance and comply with federal regulations regarding biological research data handling.
+
+**DATA SECURITY REQUIREMENTS:**
+- All research data must be encrypted during transmission and storage
+- User access logs must be maintained for security audits
+- No data may be shared with unauthorized personnel
+- All analysis results are considered government property
+
+**EXPORT CONTROLS:**
+This software and its associated algorithms may be subject to U.S. export control regulations. Unauthorized export is prohibited.
+
+**DISCLAIMER:**
+This software is provided for research purposes only. The U.S. Government makes no warranties, express or implied, regarding the accuracy, reliability, or suitability of this software for any purpose. Users assume all risks associated with its use.
+
+The above copyright notice and security classification shall be included in all copies or substantial portions of the Software.

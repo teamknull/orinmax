@@ -24,15 +24,23 @@ export function DNAHelix() {
   }
 
   return (
-    <div className="flex items-center justify-center w-full h-64">
-      <div className="dna-container">
+    <div className="flex items-center justify-center w-full h-80 bg-card border border-border rounded-lg relative overflow-hidden">
+      {/* Simple grid pattern for research feel */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--muted-foreground)) 1px, transparent 0)`,
+          backgroundSize: '20px 20px'
+        }}></div>
+      </div>
+
+      <div className="dna-container relative z-10">
         {basePairs.map((pair, index) => {
           const left = pair[0]
           const right = pair[1]
           return (
             <div
               key={index}
-              className={`bases ${pair}`}
+              className={`bases ${pair} floating-animation`}
               style={{
                 animationDelay: `${index * -166.67}ms`, // 4000ms / 24 nodes
               }}
@@ -42,6 +50,11 @@ export function DNAHelix() {
             </div>
           )
         })}
+      </div>
+
+      {/* Government-style overlay */}
+      <div className="absolute top-4 right-4 text-xs text-muted-foreground font-mono bg-muted px-2 py-1 rounded">
+        DNA Model v1.0
       </div>
     </div>
   )

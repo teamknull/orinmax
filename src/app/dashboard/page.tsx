@@ -9,54 +9,41 @@ export default async function DashboardPage() {
   const session = await auth.api.getSession({
     headers: await headers()
   });
-  
+
   if (!session) {
     redirect("/auth");
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-secondary to-background p-4">
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-card/50 backdrop-blur-sm border-border/50 rounded-lg p-6 shadow-2xl">
-          <div className="flex items-center justify-between mb-6">
-            <div>
-              <h1 className="text-3xl font-bold text-foreground mb-2">
-                Welcome, {session.user.name}!
-              </h1>
-              <p className="text-muted-foreground">
-                You are successfully signed in to orionmax
-              </p>
-            </div>
-            <form action={async () => {
-              "use server";
-              await auth.api.signOut({
-                headers: await headers()
-              });
-              redirect("/auth");
-            }}>
-              <Button 
-                type="submit"
-                variant="outline" 
-                className="border-border/50 text-foreground hover:bg-muted"
-              >
-                Sign Out
-              </Button>
-            </form>
-          </div>
-          
-          <div className="grid gap-6 md:grid-cols-1">
-
-            <div className="bg-muted/50 rounded-lg p-4 border border-border/50">
-            <h3 className="text-lg font-semibold text-foreground mb-2">Clustering</h3>
-            <ClusterClient />
-            </div>
-
-            <div className="bg-muted/50 rounded-lg p-4 border border-border/50">
-              <h3 className="text-lg font-semibold text-foreground mb-4">DNA Visualization</h3>
-              <DNAHelix />
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Main Content */}
+      <div className="max-w-6xl mx-auto p-6">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Left Column - Analysis Panel */}
+          <div className="space-y-4">
+            <div className="bg-card border-2 border-border rounded-lg shadow-lg">
+              <div className="bg-muted border-b-2 border-border px-4 py-3">
+                <h2 className="text-lg font-bold text-card-foreground">SEQUENCE CLUSTERING ANALYSIS</h2>
+                <p className="text-sm text-muted-foreground">Environmental DNA sequence analysis using DBSCAN algorithm</p>
+              </div>
+              <div className="p-4">
+                <ClusterClient />
+              </div>
             </div>
           </div>
 
+          {/* Right Column - Visualization Panel */}
+          <div className="space-y-4">
+            <div className="bg-card border-2 border-border rounded-lg shadow-lg">
+              <div className="bg-muted border-b-2 border-border px-4 py-3">
+                <h2 className="text-lg font-bold text-card-foreground">DNA HELIX VISUALIZATION</h2>
+                <p className="text-sm text-muted-foreground">3D molecular structure representation</p>
+              </div>
+              <div className="p-4">
+                <DNAHelix />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

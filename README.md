@@ -1,22 +1,21 @@
-# orionmax - Next.js Authentication Template
+# OrionPack v2.1 - U.S. Government Environmental DNA Analysis System
 
-A modern, production-ready authentication template built with Next.js 15, Better Auth, Prisma ORM, and shadcn/ui components.
+A classified government research platform for analyzing environmental DNA sequences using advanced clustering algorithms and molecular visualization tools.
 <div align="center">
   <img src="https://github.com/user-attachments/assets/1cde1a61-5b6d-4ef7-a912-a90f81b9dda2" alt="Sign In Page" width="300" height="200" style="border-radius: 8px; margin: 8px;" />
   <img src="https://github.com/user-attachments/assets/a5d9f67a-da94-483d-bae0-a585c67c9feb" alt="Sign Up Page" width="300" height="200" style="border-radius: 8px; margin: 8px;" />
   <img src="https://github.com/user-attachments/assets/731c5049-93e8-45ea-b256-bbd57319d41c" alt="Dashboard" width="300" height="200" style="border-radius: 8px; margin: 8px;" />
 </div>
-## ✨ Features
+## 🔒 CLASSIFIED FEATURES
 
-- 🔐 **Complete Authentication Flow** - Sign up, sign in, password reset
-- 🎨 **Modern UI** - Beautiful dark theme with glassmorphism effects
-- ⚡ **Next.js 15** - Latest App Router with server actions
-- 🗄️ **Database Ready** - SQLite with Prisma (easy to swap to PostgreSQL)
-- 🔒 **Better Auth** - Secure authentication with session management
-- 📱 **Responsive Design** - Works perfectly on all devices
-- 🎯 **TypeScript** - Full type safety throughout
-- 🎨 **shadcn/ui** - Professional UI components
-- 🔄 **Server Actions** - Form handling with Zod validation
+- 🔐 **SECURE AUTHENTICATION** - Multi-level clearance system with encrypted sessions
+- 🧬 **DNA SEQUENCE ANALYSIS** - Advanced clustering algorithms for environmental samples
+- 🎯 **MOLECULAR VISUALIZATION** - 3D DNA helix rendering with nucleotide mapping
+- ⚡ **REAL-TIME PROCESSING** - High-performance sequence analysis engine
+- 🗄️ **SECURE DATABASE** - Encrypted data storage with audit trails
+- 📊 **ANALYSIS REPORTING** - Detailed clustering results with statistical metrics
+- 🔬 **RESEARCH TOOLS** - Professional molecular biology analysis suite
+- 📈 **DATA EXPORT** - JSON output with government-standard formatting
 
 ## 🚀 Quick Start
 
@@ -28,8 +27,8 @@ A modern, production-ready authentication template built with Next.js 15, Better
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/rajofearth/orionmax.git
-cd orionmax
+git clone https://github.com/rajofearth/orionpack.git
+cd orionpack
 bun install
 ```
 
@@ -66,41 +65,36 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## 🏗️ Project Structure
+## 🔬 SYSTEM ARCHITECTURE
 
 ```
 src/
 ├── app/
 │   ├── auth/
-│   │   ├── page.tsx              # Auth page (protected from logged-in users)
-│   │   └── action.ts             # Server actions for auth
+│   │   ├── page.tsx              # Security clearance authentication
+│   │   └── action.ts             # Encrypted session management
 │   ├── dashboard/
-│   │   └── page.tsx              # Protected dashboard
-│   ├── forgot-password/
-│   │   └── page.tsx              # Password reset request
-│   ├── reset-password/
-│   │   └── page.tsx              # Password reset form
+│   │   └── page.tsx              # Main research terminal interface
 │   ├── api/auth/[...all]/
-│   │   └── route.ts              # Better Auth API routes
-│   ├── globals.css               # Global styles & Tailwind
-│   ├── layout.tsx                # Root layout
-│   └── page.tsx                  # Home page (redirects to auth/dashboard)
+│   │   └── route.ts              # Secure authentication endpoints
+│   ├── globals.css               # Government terminal styling
+│   └── layout.tsx                # Classified system layout
 ├── components/
-│   ├── auth-client.tsx           # Auth UI with tabs
-│   ├── sign-in.tsx               # Sign in form
-│   ├── sign-up.tsx               # Sign up form
-│   ├── forgot-password-client.tsx # Forgot password UI
-│   ├── reset-password-client.tsx # Reset password UI
-│   └── ui/                       # shadcn/ui components
+│   ├── auth-client.tsx           # Security clearance terminal
+│   ├── cluster-client.tsx        # DNA analysis terminal
+│   ├── dna-helix.tsx             # Molecular visualization module
+│   ├── sign-in.tsx               # Clearance verification form
+│   ├── sign-up.tsx               # Personnel registration form
+│   └── ui/                       # Terminal interface components
 ├── lib/
-│   ├── auth.ts                   # Better Auth configuration
-│   ├── auth-client.ts            # Client-side auth utilities
-│   ├── action-helpers.ts         # Server action utilities
-│   ├── types.ts                  # Zod schemas
-│   ├── prisma.ts                 # Prisma client
-│   └── utils.ts                  # Utility functions
+│   ├── auth.ts                   # Security protocol configuration
+│   ├── auth-client.ts            # Terminal authentication utilities
+│   ├── action-helpers.ts         # Secure action processing
+│   ├── types.ts                  # Classified data schemas
+│   ├── prisma.ts                 # Encrypted database client
+│   └── utils.ts                  # Analysis utilities
 └── generated/
-    └── prisma/                   # Generated Prisma client
+    └── prisma/                   # Auto-generated database client
 ```
 
 ## 🔧 Configuration
@@ -274,6 +268,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Ready to build something amazing?** 🚀
+**CLASSIFIED ACCESS GRANTED** 🔐
 
-This template provides a solid foundation for any Next.js application requiring authentication. Just add your business logic and deploy!
+This government research platform provides secure environmental DNA analysis capabilities for authorized personnel. Handle with appropriate security clearance.
+
+**SECURITY NOTICE:** This system contains sensitive research data. Unauthorized access is prohibited and will be prosecuted under federal law.
