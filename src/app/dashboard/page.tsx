@@ -24,7 +24,7 @@ export default async function DashboardPage() {
                 Welcome, {session.user.name}!
               </h1>
               <p className="text-muted-foreground">
-                You are successfully signed in to Sunx
+                You are successfully signed in to orionmax
               </p>
             </div>
             <form action={async () => {

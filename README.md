@@ -1,4 +1,4 @@
-# Sunx - Next.js Authentication Template
+# orionmax - Next.js Authentication Template
 
 A modern, production-ready authentication template built with Next.js 15, Better Auth, Prisma ORM, and shadcn/ui components.
 <div align="center">
@@ -28,8 +28,8 @@ A modern, production-ready authentication template built with Next.js 15, Better
 ### 1. Clone and Install
 
 ```bash
-git clone https://github.com/rajofearth/sunx.git
-cd sunx
+git clone https://github.com/rajofearth/orionmax.git
+cd orionmax
 bun install
 ```
 
