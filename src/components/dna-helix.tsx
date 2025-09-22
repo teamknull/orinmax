@@ -1,10 +1,12 @@
 "use client"
 
-import { useMemo } from "react"
+import { useState, useEffect } from "react"
 
 export function DNAHelix() {
-  // Generate random base pairs like in the original code
-  const basePairs = useMemo(() => {
+  const [basePairs, setBasePairs] = useState<string[]>([])
+
+  useEffect(() => {
+    // Generate random base pairs only on client side after hydration
     const pairs = []
     for (let i = 0; i < 24; i++) {
       const rand = Math.floor(Math.random() * 4)
@@ -13,11 +15,16 @@ export function DNAHelix() {
       else if (rand === 2) pairs.push("cg")
       else pairs.push("gc")
     }
-    return pairs
+    setBasePairs(pairs)
   }, [])
 
+  // Don't render anything until base pairs are generated (client-side only)
+  if (basePairs.length === 0) {
+    return null
+  }
+
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
+    <div className="flex items-center justify-center w-full h-64">
       <div className="dna-container">
         {basePairs.map((pair, index) => {
           const left = pair[0]

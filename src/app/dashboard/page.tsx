@@ -45,14 +45,17 @@ export default async function DashboardPage() {
           </div>
           
           <div className="grid gap-6 md:grid-cols-1">
-            
+
             <div className="bg-muted/50 rounded-lg p-4 border border-border/50">
             <h3 className="text-lg font-semibold text-foreground mb-2">Clustering</h3>
             <ClusterClient />
             </div>
-          </div>
 
-          <DNAHelix />
+            <div className="bg-muted/50 rounded-lg p-4 border border-border/50">
+              <h3 className="text-lg font-semibold text-foreground mb-4">DNA Visualization</h3>
+              <DNAHelix />
+            </div>
+          </div>
 
         </div>
       </div>

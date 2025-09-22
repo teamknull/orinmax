@@ -320,11 +320,11 @@
   transform: translate(50%, -50%);
 }
 
-/* Flip label colors (complementary to their base) */
-.label-a { color: var(--dna-t); }
-.label-t { color: var(--dna-a); }
-.label-c { color: var(--dna-g); }
-.label-g { color: var(--dna-c); }
+/* Match label colors to their respective bases */
+.label-a { color: var(--dna-a); }
+.label-t { color: var(--dna-t); }
+.label-c { color: var(--dna-c); }
+.label-g { color: var(--dna-g); }
 
 @keyframes dna-spin {
   0% {
